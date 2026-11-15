@@ -36,6 +36,11 @@ public class UserValidator {
                     "Name cannot be null or empty"
             );
         }
+        if (name.length() > 256) {
+            throw new IllegalArgumentException(
+                    "Name must not exceed 256 characters."
+            );
+        }
     }
 
     public static void validateAge(Integer age) {
@@ -50,6 +55,11 @@ public class UserValidator {
         if (email == null || email.isBlank()) {
             throw new IllegalArgumentException(
                     "Email cannot be null or empty"
+            );
+        }
+        if (email.length() > 256) {
+            throw new IllegalArgumentException(
+                    "Email must not exceed 256 characters."
             );
         }
         if(!EMAIL_PATTERN.matcher(email).matches()) {

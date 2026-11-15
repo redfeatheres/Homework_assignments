@@ -8,7 +8,7 @@ public final class HibernateUtil {
     private static final SessionFactory SESSION_FACTORY =
             buildSessionFactory();
 
-    public HibernateUtil() {}
+    private HibernateUtil() {}
 
     private static SessionFactory buildSessionFactory() {
         return new Configuration()

@@ -66,6 +66,10 @@ public class UserService {
     public User updateUser(Long id, User user) {
         UserValidator.validateUser(user);
         UserValidator.validateId(id);
+        if (userDAO.getUserById(id) == null) {
+            log.info("Update skipped: user not found. ID: {}", id);
+            return null;
+        }
         if(userDAO.existsByEmailAndIdNot(user.getEmail(), id)) {
             throw new IllegalArgumentException("Email already exists");
         }

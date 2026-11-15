@@ -14,10 +14,10 @@ public class User {
     @Column(name ="id")
     private Long  id;
 
-    @Column(name ="name", nullable = false)
+    @Column(name ="name", nullable = false, length = 256)
     private String name;
 
-    @Column(name ="email", unique = true, nullable = false)
+    @Column(name ="email", unique = true, nullable = false, length = 256)
     private String email;
 
     @Column(name ="age", nullable = false)
