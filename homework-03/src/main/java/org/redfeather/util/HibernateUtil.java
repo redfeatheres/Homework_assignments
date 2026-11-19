@@ -1,0 +1,26 @@
+package org.redfeather.util;
+
+import org.redfeather.model.User;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public final class HibernateUtil {
+    private static final SessionFactory SESSION_FACTORY =
+            buildSessionFactory();
+
+    private HibernateUtil() {}
+
+    private static SessionFactory buildSessionFactory() {
+        return new Configuration()
+                .addAnnotatedClass(User.class)
+                .buildSessionFactory();
+    }
+
+    public static SessionFactory getSessionFactory() {
+        return SESSION_FACTORY;
+    }
+
+    public static void shutdown() {
+        SESSION_FACTORY.close();
+    }
+}
